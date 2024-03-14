@@ -31,14 +31,12 @@ public class BoardController {
             // 조회에 성공한 경우
             String successMessage = "게시글 목록 조회에 성공했습니다.";
 
-            return ResponseEntity.ok()
-                    .body(new Response(successMessage, boardList));
+            return ok(successMessage, boardList);
         } catch (Exception e) {
             // 조회에 실패한 경우
             String errorMessage = "게시글 목록 조회에 실패했습니다.";
 
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new Response(errorMessage));
+            return error(errorMessage);
         }
     }
 
@@ -50,13 +48,11 @@ public class BoardController {
             boardService.addBoard(requestForAdd);
             // 등록에 성공한 경우
             String successMessage = "게시글 등록을 성공했습니다.";
-            return ResponseEntity.ok()
-                    .body(new Response(successMessage));
+            return ok(successMessage);
         } catch (Exception e) {
             // 등록에 실패한 경우
             String errorMessage = "게시글 등록에 실패했습니다.";
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new Response(errorMessage));
+            return error(errorMessage);
         }
     }
 
@@ -68,13 +64,11 @@ public class BoardController {
             boardService.updateBoard(requestForUpdate);
             // 수정에 성공한 경우
             String successMessage = "게시글 수정을 성공했습니다.";
-            return ResponseEntity.ok()
-                    .body(new Response(successMessage));
+            return ok(successMessage);
         } catch (Exception e) {
             // 수정에 실패한 경우
             String errorMessage = "게시글 수정에 실패했습니다.";
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new Response(errorMessage));
+            return error(errorMessage);
         }
     }
 
@@ -86,14 +80,27 @@ public class BoardController {
             boardService.deleteBoard(boardId);
             // 삭제에 성공한 경우
             String successMessage = "게시글을 삭제했습니다.";
-            return ResponseEntity.ok()
-                    .body(new Response(successMessage));
+            return ok(successMessage);
         } catch (Exception e) {
             // 삭제에 실패한 경우
             String errorMessage = "게시글 삭제에 실패했습니다.";
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new Response(errorMessage));
+            return error(errorMessage);
         }
+    }
+
+    private ResponseEntity<?> ok(String successMessage){
+        return ResponseEntity.ok()
+                .body(new Response(successMessage));
+    }
+
+    private ResponseEntity<?> ok(String successMessage, Object data){
+        return ResponseEntity.ok()
+                .body(new Response(successMessage, data));
+    }
+
+    private ResponseEntity<?> error(String errorMessage){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new Response(errorMessage));
     }
 
 }
