@@ -40,6 +40,21 @@ public class BoardController {
         }
     }
 
+    @GetMapping("/{boardId}")
+    public ResponseEntity<?> getBoard(@PathVariable("boardId") Long boardId) {
+
+        Board board = boardService.getBoard(boardId);
+        
+        try {
+            if(board == null) throw new NullPointerException();
+            String successMessage = "해당 게시글 조회에 성공했습니다.";
+            return ok(successMessage, board);
+        } catch (Exception e) {
+            String errorMessage = "해당 게시글 조회에 실패했습니다.";
+            return error(errorMessage);
+        }
+    }
+
     // 등록
     @PostMapping("/add")
     public ResponseEntity<?> addBoard(@RequestBody RequestForAdd requestForAdd) {

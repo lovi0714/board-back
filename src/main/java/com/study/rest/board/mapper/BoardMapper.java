@@ -12,6 +12,8 @@ public interface BoardMapper {
 
     List<Board> getBoardList();
 
+    Board getBoard(Long boardId);
+
     void addBoard(RequestForAdd requestForAdd);
 
     void updateBoard(RequestForUpdate requestForUpdate);
