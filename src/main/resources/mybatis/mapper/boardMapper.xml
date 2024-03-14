@@ -18,4 +18,12 @@
         FROM BOARD
         ORDER BY board_id DESC
     </select>
+
+    <!--저장 -->
+    <insert id="addBoard" parameterType="requestForAdd">
+        insert into BOARD
+            (writer, title, content, reg_date)
+        values (#{writer}, #{title}, #{content}, #{regDate});
+    </insert>
+
 </mapper>

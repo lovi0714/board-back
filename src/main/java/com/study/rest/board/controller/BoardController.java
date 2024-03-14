@@ -1,7 +1,7 @@
 package com.study.rest.board.controller;
 
 import com.study.rest.board.dto.Board;
-import com.study.rest.board.dto.RequestForAddBoard;
+import com.study.rest.board.dto.RequestForAdd;
 import com.study.rest.board.service.BoardService;
 import com.study.rest.board.util.Response;
 import lombok.RequiredArgsConstructor;
@@ -41,23 +41,19 @@ public class BoardController {
         }
     }
 
-
     // 등록
     @PostMapping("/add")
-    public ResponseEntity<?> addBoard(@RequestBody RequestForAddBoard board) {
-
-        boardService.addBoard(board);
+    public ResponseEntity<?> addBoard(@RequestBody RequestForAdd board) {
 
         try {
+            boardService.addBoard(board);
             // 등록에 성공한 경우
             String successMessage = "게시글 등록을 성공했습니다.";
-
             return ResponseEntity.ok()
                     .body(new Response(successMessage));
         } catch (Exception e) {
             // 등록에 실패한 경우
             String errorMessage = "게시글 등록에 실패했습니다.";
-
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new Response(errorMessage));
         }
