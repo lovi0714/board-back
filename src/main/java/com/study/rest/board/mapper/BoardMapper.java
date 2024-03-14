@@ -2,6 +2,7 @@ package com.study.rest.board.mapper;
 
 import com.study.rest.board.dto.Board;
 import com.study.rest.board.dto.RequestForAdd;
+import com.study.rest.board.dto.RequestForUpdate;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,5 +12,7 @@ public interface BoardMapper {
 
     List<Board> getBoardList();
 
-    void addBoard(RequestForAdd board);
+    void addBoard(RequestForAdd requestForAdd);
+
+    void updateBoard(RequestForUpdate requestForUpdate);
 }

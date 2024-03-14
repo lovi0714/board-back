@@ -26,4 +26,13 @@
         values (#{writer}, #{title}, #{content}, #{regDate});
     </insert>
 
+    <!--수정 -->
+    <update id="updateBoard" parameterType="requestForUpdate">
+        update BOARD
+        set title = #{title},
+            content = #{content},
+            upd_date = #{updDate}
+        where board_id = #{boardId};
+    </update>
+
 </mapper>
