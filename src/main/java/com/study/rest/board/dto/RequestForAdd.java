@@ -1,6 +1,7 @@
 package com.study.rest.board.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -11,6 +12,7 @@ public class RequestForAdd {
     private final String writer;
     private final String title;
     private final String content;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
     private final LocalDateTime regDate;
 
     @JsonCreator
