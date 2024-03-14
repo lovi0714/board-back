@@ -35,4 +35,10 @@
         where board_id = #{boardId};
     </update>
 
+    <!--삭제-->
+    <delete id="deleteBoard">
+        DELETE FROM BOARD
+        WHERE board_id = #{boardId}
+    </delete>
+
 </mapper>

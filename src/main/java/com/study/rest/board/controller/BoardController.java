@@ -66,20 +66,35 @@ public class BoardController {
 
         try {
             boardService.updateBoard(requestForUpdate);
-            // 등록에 성공한 경우
+            // 수정에 성공한 경우
             String successMessage = "게시글 수정을 성공했습니다.";
             return ResponseEntity.ok()
                     .body(new Response(successMessage));
         } catch (Exception e) {
-            // 등록에 실패한 경우
+            // 수정에 실패한 경우
             String errorMessage = "게시글 수정에 실패했습니다.";
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new Response(errorMessage));
         }
     }
 
-
     // 삭제
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteBoard(@RequestParam("boardId") Long boardId) {
+
+        try {
+            boardService.deleteBoard(boardId);
+            // 삭제에 성공한 경우
+            String successMessage = "게시글을 삭제했습니다.";
+            return ResponseEntity.ok()
+                    .body(new Response(successMessage));
+        } catch (Exception e) {
+            // 삭제에 실패한 경우
+            String errorMessage = "게시글 삭제에 실패했습니다.";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new Response(errorMessage));
+        }
+    }
 
 }
 

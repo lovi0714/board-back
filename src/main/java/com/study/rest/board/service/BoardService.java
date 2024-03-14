@@ -25,4 +25,8 @@ public class BoardService {
     public void updateBoard(RequestForUpdate requestForUpdate) {
         boardMapper.updateBoard(requestForUpdate);
     }
+
+    public void deleteBoard(Long boardId) {
+        boardMapper.deleteBoard(boardId);
+    }
 }
