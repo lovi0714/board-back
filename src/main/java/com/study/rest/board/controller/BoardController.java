@@ -22,7 +22,7 @@ public class BoardController {
     private final BoardService boardService;
 
     // 조회
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<?> getBoardList() {
 
         List<Board> boardList = boardService.getBoardList();

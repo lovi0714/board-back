@@ -6,5 +6,6 @@
     <typeAliases>
         <typeAlias alias="board" type="com.study.rest.board.dto.Board"/>
         <typeAlias alias="requestForAdd" type="com.study.rest.board.dto.RequestForAdd"/>
+        <typeAlias alias="requestForUpdate" type="com.study.rest.board.dto.RequestForUpdate"/>
     </typeAliases>
 </configuration>
